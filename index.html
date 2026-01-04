@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUEEN LITHULI MD - Free WhatsApp Bot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #1a0a0a;
+            --primary-gradient: linear-gradient(135deg, #ff002b, #8b0000);
+            --secondary-gradient: linear-gradient(135deg, #8b0000, #400000);
+            --accent-gradient: linear-gradient(135deg, #ff3333, #cc0000);
+            --text-color: #ffffff;
+            --muted-text: #b8b8b8;
+            --border-color: rgba(255, 0, 43, 0.3);
+            --header-bg: rgba(10, 10, 10, 0.95);
+            --accent-red: #ff002b;
+            --accent-dark-red: #8b0000;
+            --accent-neon: #ff3333;
+            --code-bg: #1a0a0a;
+            --danger-red: #ff0000;
+            --whatsapp-green: #25D366;
+            --free-color: #00ff00;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Poppins', sans-serif; 
+            scroll-behavior: smooth; 
+        }
+        
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 43, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 80% 20%, rgba(139, 0, 0, 0.05) 0%, transparent 20%);
+        }
+        
+        #particles-js { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            pointer-events: none; 
+            z-index: 0; 
+        }
+        
+        .container { 
+            width: 90%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            position: relative; 
+            z-index: 1; 
+        }
+
+        /* Header Styles */
+        header { 
+            background: var(--header-bg); 
+            backdrop-filter: blur(12px); 
+            padding: 15px 0; 
+            border-bottom: 1px solid var(--border-color); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 5px 20px rgba(255, 0, 43, 0.1);
+        }
+        
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-red);
+            box-shadow: 0 0 15px rgba(255, 0, 43, 0.3);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo h1 { 
+            font-size: 1.8rem; 
+            background: var(--primary-gradient); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .creator-name {
+            font-size: 0.8rem;
+            color: var(--muted-text);
+            font-weight: 500;
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 25px; 
+        }
+        
+        nav a { 
+            color: var(--muted-text); 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: 0.3s; 
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav a:hover { 
+            color: var(--accent-red); 
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero { 
+            padding: 150px 0 100px; 
+            text-align: center; 
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255, 0, 43, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .hero-banner { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            border-radius: 24px; 
+            padding: 50px 40px; 
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(255, 0, 43, 0.1); 
+            max-width: 900px; 
+            margin: 0 auto; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--primary-gradient);
+            opacity: 0.05;
+            transform: rotate(45deg);
+        }
+        
+        .hero h2 { 
+            font-size: 3.5rem; 
+            background: var(--primary-gradient); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            margin-bottom: 15px; 
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 30px rgba(255, 0, 43, 0.3);
+        }
+        
+        .free-badge {
+            display: inline-block;
+            background: var(--free-color);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .hero-subtitle {
+            color: var(--accent-red);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .hero p { 
+            color: var(--muted-text); 
+            margin-bottom: 30px; 
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Button Styles */
+        .btn { 
+            padding: 14px 32px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 8px; 
+            border: none; 
+            cursor: pointer; 
+            margin: 5px; 
+            position: relative; 
+            overflow: hidden; 
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary { 
+            background: var(--primary-gradient); 
+            color: white; 
+            box-shadow: 0 8px 20px rgba(255, 0, 43, 0.3); 
+        }
+        
+        .btn-whatsapp { 
+            background: var(--whatsapp-green); 
+            color: white; 
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); 
+        }
+        
+        .btn-free { 
+            background: var(--free-color); 
+            color: #000; 
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(0, 255, 0, 0.3); 
+        }
+        
+        .btn-secondary { 
+            background: var(--secondary-gradient); 
+            color: white; 
+            box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3); 
+        }
+        
+        .btn-outline { 
+            background: transparent; 
+            color: var(--text-color); 
+            border: 1px solid var(--border-color); 
+        }
+        
+        .btn:hover { 
+            transform: translateY(-3px); 
+            opacity: 0.9; 
+        }
+        
+        .btn-primary:hover { 
+            box-shadow: 0 12px 25px rgba(255, 0, 43, 0.4); 
+        }
+        
+        .btn-whatsapp:hover { 
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4); 
+        }
+        
+        .btn-free:hover { 
+            box-shadow: 0 12px 25px rgba(0, 255, 0, 0.4); 
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+        
+        .btn::after { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: -100%; 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); 
+            transition: 0.5s; 
+        }
+        
+        .btn:hover::after { 
+            left: 100%; 
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 0, 43, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(255, 0, 43, 1); }
+        }
+
+        /* Sections */
+        .section-title { 
+            text-align: center; 
+            margin-bottom: 50px; 
+            padding-top: 80px; 
+        }
+        
+        .section-title h2 { 
+            font-size: 2.8rem; 
+            background: var(--primary-gradient); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 15px;
+            animation: glow 3s infinite;
+        }
+        
+        .section-title p {
+            color: var(--muted-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Setup Guide Section */
+        .setup-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-red);
+            box-shadow: 0 15px 30px rgba(255, 0, 43, 0.1);
+        }
+        
+        .step-card i {
+            font-size: 3rem;
+            color: var(--accent-red);
+            margin-bottom: 20px;
+        }
+        
+        .step-card h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .step-card p {
+            color: var(--muted-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Features Grid */
+        .features-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+            margin: 50px 0; 
+        }
+        
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            padding: 30px; 
+            border-radius: 15px; 
+            transition: all 0.3s; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover { 
+            border-color: var(--accent-red); 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 30px rgba(255, 0, 43, 0.1);
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card i { 
+            font-size: 2.5rem; 
+            color: var(--accent-red); 
+            margin-bottom: 20px; 
+            background: rgba(255, 0, 43, 0.1);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .card p {
+            color: var(--muted-text);
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-flex { 
+            display: flex; 
+            align-items: center; 
+            gap: 50px; 
+            flex-wrap: wrap; 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            padding: 50px; 
+            border-radius: 24px; 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dev-img-container { 
+            flex: 1; 
+            min-width: 300px; 
+            text-align: center; 
+        }
+        
+        .dev-img-container img { 
+            width: 100%; 
+            max-width: 350px; 
+            border-radius: 20px; 
+            border: 3px solid var(--accent-red); 
+            box-shadow: 0 0 30px rgba(255, 0, 43, 0.3); 
+            filter: contrast(1.1);
+        }
+        
+        .about-text { 
+            flex: 1.5; 
+            min-width: 300px; 
+        }
+        
+        .about-text h2 { 
+            color: var(--accent-red); 
+            margin-bottom: 20px; 
+            font-size: 2.2rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .dev-info-box {
+            background: rgba(255, 0, 43, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin: 25px 0;
+        }
+
+        /* Footer */
+        footer { 
+            border-top: 1px solid var(--border-color); 
+            padding: 70px 0 30px; 
+            margin-top: 100px; 
+            background: var(--card-bg);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--primary-gradient);
+        }
+        
+        .button-group { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            flex-wrap: wrap; 
+            margin-top: 30px; 
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section {
+            text-align: center;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p {
+            color: var(--muted-text);
+            margin-bottom: 20px;
+        }
+
+        .hidden-audio {
+            position: absolute;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Stats Counter */
+        .stats-counter {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Orbitron', sans-serif;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Commands Section */
+        .commands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 50px 0;
+        }
+        
+        .command-category {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 25px;
+        }
+        
+        .command-category h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .command-category h3 i {
+            color: var(--accent-red);
+        }
+        
+        .command-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .command-item:last-child {
+            border-bottom: none;
+        }
+        
+        .command-name {
+            color: var(--accent-red);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .command-desc {
+            color: var(--muted-text);
+            font-size: 0.85rem;
+            text-align: right;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) { 
+            .hero h2 { font-size: 2.5rem; } 
+            nav { display: none; } 
+            .about-flex { flex-direction: column; text-align: center; padding: 30px; } 
+            .button-group { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; }
+            .section-title h2 { font-size: 2.2rem; }
+            .hero-banner { padding: 30px 20px; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h2 { font-size: 2rem; }
+            .section-title h2 { font-size: 1.8rem; }
+            .stat-number { font-size: 2.2rem; }
+            .about-flex { padding: 20px; }
+            .setup-steps { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden Audio Element -->
+    <audio id="bg-music" class="hidden-audio" loop>
+        <source src="https://files.catbox.moe/ohbxno.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://files.catbox.moe/n1jb4u.png" alt="QUEEN LITHULI MD" class="logo-img">
+                <div class="logo-text">
+                    <h1>QUEEN LITHULI MD</h1>
+                    <div class="creator-name">By 𝐊.𝐋.𝐖 𝐋ᴇɢᴇɴ𝐃 𝐂ᴜᴘɪʀ𝐈 𝐖ʜɪᴛ𝐄 𝐃ʀᴀɢᴏ𝐍</div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#setup">Setup Guide</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#commands">Commands</a></li>
+                    <li><a href="#about">Developer</a></li>
+                </ul>
+            </nav>
+            <a href="https://wa.me/94776532488?text=.menu" target="_blank" class="btn btn-free" style="padding: 10px 20px; font-size: 0.9rem;">
+                <i class="fas fa-robot"></i> Use Bot
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-banner">
+                <div class="free-badge">100% FREE WHATSAPP BOT</div>
+                <div class="hero-subtitle">OPEN SOURCE & FREE TO USE</div>
+                <h2>QUEEN LITHULI MD</h2>
+                <p>The most advanced FREE WhatsApp bot with premium features, AI capabilities, and 200+ commands. No payment required - completely free forever!</p>
+                
+                <div class="stats-counter">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="200">0+</div>
+                        <div class="stat-label">Free Commands</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="99.9">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="50">0+</div>
+                        <div class="stat-label">Free Modules</div>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <a href="#setup" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Get Started Free
+                    </a>
+                    <a href="https://wa.me/94776532488?text=.menu" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Try Bot Now
+                    </a>
+                    <a href="https://wa.me/94776532488?text=Hi,%20I%20need%20help%20with%20QUEEN%20LITHULI%20MD%20bot" target="_blank" class="btn btn-outline">
+                        <i class="fas fa-question-circle"></i> Get Help
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Setup Guide Section -->
+    <section class="container" id="setup">
+        <div class="section-title">
+            <h2>Free Setup Guide</h2>
+            <p>Get QUEEN LITHULI MD running in 4 simple steps - 100% Free</p>
+        </div>
+        
+        <div class="setup-steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <i class="fab fa-whatsapp"></i>
+                <h3>Save Number</h3>
+                <p>Save this number in your contacts: <strong>+94 77 653 2488</strong></p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <i class="fas fa-comment"></i>
+                <h3>Send Message</h3>
+                <p>Send any message like "Hi" or ".menu" to activate the bot</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <i class="fas fa-bolt"></i>
+                <h3>Use Commands</h3>
+                <p>Start using commands like .menu, .help, .sticker, .play etc.</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <i class="fas fa-robot"></i>
+                <h3>Enjoy Features</h3>
+                <p>Access all 200+ commands and premium features for FREE</p>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <a href="https://wa.me/94776532488?text=.menu" target="_blank" class="btn btn-free">
+                <i class="fab fa-whatsapp"></i> Start Using Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container" id="features">
+        <div class="section-title">
+            <h2>Free Features</h2>
+            <p>All these premium features are available for FREE</p>
+        </div>
+        <div class="features-grid">
+            <div class="card">
+                <i class="fas fa-brain"></i>
+                <h3>AI Integration</h3>
+                <p>Free ChatGPT, AI image recognition, smart conversations and content generation.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Security Features</h3>
+                <p>Free anti-ban protection and secure session management included.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-cloud-download-alt"></i>
+                <h3>Media Downloader</h3>
+                <p>Free downloads from YouTube, TikTok, Instagram, Facebook and more.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-gamepad"></i>
+                <h3>Entertainment</h3>
+                <p>Free games, RPG system, memes, jokes and fun commands.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-robot"></i>
+                <h3>Auto Reply</h3>
+                <p>Free auto-reply system with pattern recognition.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-tools"></i>
+                <h3>Group Management</h3>
+                <p>Free moderation tools, auto-welcome and anti-spam features.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commands Section -->
+    <section class="container" id="commands">
+        <div class="section-title">
+            <h2>Free Commands</h2>
+            <p>Some of the 200+ free commands available</p>
+        </div>
+        
+        <div class="commands-grid">
+            <div class="command-category">
+                <h3><i class="fas fa-cog"></i> Utility Commands</h3>
+                <div class="command-item">
+                    <span class="command-name">.menu</span>
+                    <span class="command-desc">Show all commands</span>
+                </div>
+                <div class="command-item">
+                    <span class="command-name">.ping</span>
+                    <span class="command-desc">Check bot status</span>
+                </div>
+                <div class="command-item">
+                    <span class="command-name">.owner</span>
+                    <span class="command-desc">Contact developer</span>
+                </div>
+                <div class="command-item">
+                    <span class="command-name">.help</span>
+                    <span class="command-desc">Get help</span>
+                </div>
+            </div>
+            
+            <div class="command-category">
+                <h3><i class="fas fa-music"></i> Media Commands</h3>
+                <div class="command-item">
+                    <span class="command-name">.play [song]</span>
+                    <span class="command-desc">Play music</span>
+                </div>
+                <div class="command-item">
+                    <span class="command-name">.yt [url]</span>
+                    <span class="command-desc">YouTube download</span>
+                </div>
+                <div class="command-item">
+                    <span class="command-name">.sticker</span>
+                    <span class="command-desc">Make sticker</span>
+                </div>
+                <div class="command-item">
+                    <span class="command-name">.ig [url]</span>
+                    <span class="command-desc">Instagram download</span>
+                </div>
+            </div>
+            
+            <div class="command-category">
+                <h3><i class="fas fa-gamepad"></i> Fun Commands</h3>
+                <div class="command-item">
+                    <span class="command-name">.gpt [query]</span>
+                    <span class="command-desc">Ask AI anything</span>
+                </div>
+                <div class="command-item">
+                    <span class="command-name">.joke</span>
+                    <span class="command-desc">Random joke</span>
+                </div>
+                <div class="command-item">
+                    <span class="command-name">.meme</span>
+                    <span class="command-desc">Send memes</span>
+                </div>
+                <div class="command-item">
+                    <span class="command-name">.quote</span>
+                    <span class="command-desc">Inspirational quote</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <a href="https://wa.me/94776532488?text=.menu" target="_blank" class="btn btn-outline">
+                <i class="fas fa-list"></i> See All Commands
+            </a>
+        </div>
+    </section>
+
+    <!-- About Developer Section -->
+    <section class="container" id="about">
+        <div class="section-title">
+            <h2>About Developer</h2>
+            <p>Creator of this FREE WhatsApp bot</p>
+        </div>
+        <div class="about-flex">
+            <div class="dev-img-container">
+                <img src="https://files.catbox.moe/n1jb4u.png" alt="QUEEN LITHULI MD">
+            </div>
+            <div class="about-text">
+                <h2>𝐊.𝐋.𝐖 𝐋ᴇɢᴇɴ𝐃 𝐂ᴜᴘɪʀ𝐈 𝐖ʜɪᴛ𝐄 𝐃ʀᴀɢᴏ𝐍</h2>
+                <p>Created QUEEN LITHULI MD as a free, open-source WhatsApp bot for everyone to enjoy. Providing premium features for free to the community.</p>
+                
+                <div class="dev-info-box">
+                    <i class="fas fa-heart" style="color: var(--accent-red); margin-bottom: 10px;"></i>
+                    <h3 style="color: white; margin-bottom: 10px;">Free For Everyone</h3>
+                    <p style="color: var(--muted-text); font-size: 0.95rem;">
+                        This bot is completely free forever! No payments, no subscriptions, no hidden costs. Just save the number and start using it.
+                    </p>
+                </div>
+                
+                <div class="button-group">
+                    <a href="https://wa.me/94776532488?text=.menu" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Use Free Bot
+                    </a>
+                    <a href="https://wa.me/94776532488?text=Thank%20you%20for%20making%20QUEEN%20LITHULI%20MD%20free!" target="_blank" class="btn btn-outline">
+                        <i class="fas fa-star"></i> Say Thanks
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Start</h3>
+                    <p>Start using the bot in seconds</p>
+                    <a href="https://wa.me/94776532488?text=.menu" target="_blank" class="btn btn-free" style="padding: 12px 25px;">
+                        <i class="fab fa-whatsapp"></i> Start Free Bot
+                    </a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Developer</h3>
+                    <p>For questions and support</p>
+                    <a href="https://wa.me/94776532488?text=Hi,%20I%20have%20a%20question%20about%20QUEEN%20LITHULI%20MD" target="_blank" class="btn btn-outline" style="padding: 12px 25px;">
+                        <i class="fas fa-question-circle"></i> Ask Question
+                    </a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Bot Number</h3>
+                    <p>Save this number to use bot</p>
+                    <div style="background: rgba(255, 0, 43, 0.1); padding: 15px; border-radius: 10px; margin-top: 10px;">
+                        <code style="color: var(--free-color); font-size: 1.2rem; font-weight: bold;">+94 77 653 2488</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color);">
+                <p style="color: var(--muted-text); font-size: 0.9rem;">
+                    &copy; 2024 QUEEN LITHULI MD - 100% FREE WHATSAPP BOT<br>
+                    Created by 𝐊.𝐋.𝐖 𝐋ᴇɢᴇɴ𝐃 𝐂ᴜᴘɪʀ𝐈 𝐖ʜɪᴛ𝐄 𝐃ʀᴀɢᴏ𝐍<br>
+                    WhatsApp: +94 77 653 2488
+                </p>
+                <p style="color: var(--free-color); margin-top: 20px; font-size: 0.9rem; font-weight: bold;">
+                    <i class="fas fa-gift"></i> Completely FREE Forever - No Payments Required!
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize background music
+        const bgMusic = document.getElementById('bg-music');
+        bgMusic.volume = 0.3;
+        
+        // Play music on user interaction
+        document.addEventListener('click', function() {
+            if (bgMusic.paused) {
+                bgMusic.play().catch(e => console.log("Playback error:", e));
+            }
+        }, { once: true });
+
+        // Animated counter
+        function animateCounter() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.innerText = Math.floor(current) + (counter.getAttribute('data-count').includes('%') ? '%' : '+');
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.innerText = target + (counter.getAttribute('data-count').includes('%') ? '%' : '+');
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Initialize particles background
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#ff002b" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#8b0000",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            animateCounter();
+            
+            // Add scroll animation for cards
+            const cards = document.querySelectorAll('.card, .step-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Copy phone number on click
+            const phoneNumber = document.querySelector('code');
+            if (phoneNumber) {
+                phoneNumber.addEventListener('click', function() {
+                    navigator.clipboard.writeText('+94776532488').then(() => {
+                        const originalText = phoneNumber.innerText;
+                        phoneNumber.innerText = 'Copied!';
+                        setTimeout(() => {
+                            phoneNumber.innerText = originalText;
+                        }, 2000);
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
